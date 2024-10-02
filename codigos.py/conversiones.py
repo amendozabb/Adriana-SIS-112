@@ -1,0 +1,7 @@
+print("Conversor de unidades")
+def longuitud(num)
+   return (a*1000)
+def masa(num)
+   return (a*1000)
+def temperatura(num)
+   return(a* 9/5 + 32)
