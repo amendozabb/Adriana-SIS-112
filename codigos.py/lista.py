@@ -27,6 +27,8 @@ fin= time.time()
 print(f"Tiempo transcurrido en encontrar el numero \n {(fin-inicio)*1000}ms") #fin del tiempo 
 
 
-lis.busqueda_binaria(listaNum,)
+
+
+
 
 

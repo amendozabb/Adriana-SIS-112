@@ -9,4 +9,4 @@ promedio = suma/total
 print(promedio)
 
 estudiantes= int(input("Ingrese a cuantos estudiantes quiere calificar:"))
-estudiantes
+estudiantes 

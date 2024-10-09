@@ -13,3 +13,5 @@ lista = [[1, 2, 3],
 for fila in lista:  # Iterar sobre cada fila
     for elemento in fila:  # Iterar sobre cada elemento en la fila
         print(elemento)
+
+
