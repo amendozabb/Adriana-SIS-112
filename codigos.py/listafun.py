@@ -6,7 +6,7 @@ import random
   #        lista.append(numaleatorio)
   #   return lista
 
-def generarLista(tamaniolista,valorMinimo,valorMaximo,lista):
+def generarLista(tamaniolista,valorMinimo,valorMaximo,lista):  # no repite en mismo  numero 
     while tamaniolista != len(lista):
         numaleatorio= random.randint(valorMinimo,valorMaximo)
         if numaleatorio not in lista:
