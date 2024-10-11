@@ -12,10 +12,21 @@
  #   return -1
 
 
-def busqueda_binaria(lista, numero)
+def busqueda_binaria(lista, objetivo)
+    fin =len(lista) - 1
     lista.sort()
-    tamanio= len(lista)
-    medio= len(lista)// 2
+    inicio= 0 
+    while inicio <= fin:
+        medio =(inicio+ fin) // 2
+    print ("=========\n",medio)
+    if lista[medio]== objetivo:
+        return medio
+    elif objetivo >lista[medio]:
+     inicio=medio +1
+    else:
+       fin= medio -1
+    print(medio)    
+    
     
 
 
