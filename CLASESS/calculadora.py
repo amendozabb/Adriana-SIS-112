@@ -1,72 +1,59 @@
 import tkinter as tk
 
-# Crear la ventana principal
+# Ventana principal
 root = tk.Tk()
 root.title("Calculadora")
 
-# Variable para almacenar la expresión
+# Almacenar la expresión matemática
 expression = ""
 
-# Función para actualizar la expresión en la entrada de texto
-def update_expression(value):
+# Actualizar la expresión
+def press(num):
     global expression
-    expression += str(value)
-    input_text.set(expression)
+    expression += str(num)
+    equation.set(expression)
 
-# Función para evaluar la expresión y mostrar el resultado
-def evaluate_expression():
-    global expression
+# Evaluar la expresión
+def equalpress():
     try:
-        result = str(eval(expression))  # Evalúa la expresión
-        input_text.set(result)         # Muestra el resultado en la entrada
-        expression = result            # Actualiza la expresión con el resultado
-    except Exception as e:
-        input_text.set("Error")
+        global expression
+        result = str(eval(expression))
+        equation.set(result)
+        expression = result
+    except:
+        equation.set("Error")
         expression = ""
 
-# Función para borrar la entrada
-def clear_expression():
+def clear():
     global expression
     expression = ""
-    input_text.set("")
+    equation.set("")
 
-# Variable para la entrada de texto
-input_text = tk.StringVar()
 
-# Crear la entrada de texto
-input_frame = tk.Frame(root)
-input_frame.pack()
+equation = tk.StringVar()
 
-input_field = tk.Entry(input_frame, textvariable=input_text, font=('Arial', 18), bd=10, insertwidth=4, width=14, justify='right')
-input_field.grid(row=0, column=0)
-input_field.pack()
+# Mostrar la expresión y el resultado
+entry_field = tk.Entry(root, textvariable=equation, font=('Arial', 18), bd=8, insertwidth=2, width=14, borderwidth=4)
+entry_field.grid(columnspan=4)
 
-# Crear el marco para los botones
-button_frame = tk.Frame(root)
-button_frame.pack()
-
-# Definir los botones
-buttons = [
-    '7', '8', '9', '/', 
-    '4', '5', '6', '*', 
-    '1', '2', '3', '-', 
-    '0', 'C', '=', '+'
+# Botones
+button_texts = [
+    ('7', 1, 0), ('8', 1, 1), ('9', 1, 2), ('/', 1, 3),
+    ('4', 2, 0), ('5', 2, 1), ('6', 2, 2), ('*', 2, 3),
+    ('1', 3, 0), ('2', 3, 1), ('3', 3, 2), ('-', 3, 3),
+    ('0', 4, 0), ('C', 4, 1), ('=', 4, 2), ('+', 4, 3)
 ]
 
-# Crear y colocar los botones en la cuadrícula
-row_value = 0
-col_value = 0
-for button in buttons:
-    if button == "=":
-        tk.Button(button_frame, text=button, font=('Arial', 18), fg='black', width=4, height=2, bd=1, command=evaluate_expression).grid(row=row_value, column=col_value)
-    elif button == "C":
-        tk.Button(button_frame, text=button, font=('Arial', 18), fg='black', width=4, height=2, bd=1, command=clear_expression).grid(row=row_value, column=col_value)
+for (text, row, col) in button_texts:
+    if text == '=':
+        tk.Button(root, text=text, height=2, width=7, command=equalpress).grid(row=row, column=col)
+    elif text == 'C':
+        tk.Button(root, text=text, height=2, width=7, command=clear).grid(row=row, column=col)
     else:
-        tk.Button(button_frame, text=button, font=('Arial', 18), fg='black', width=4, height=2, bd=1, command=lambda x=button: update_expression(x)).grid(row=row_value, column=col_value)
-    col_value += 1
-    if col_value > 3:
-        col_value = 0
-        row_value += 1
+        tk.Button(root, text=text, height=2, width=7, command=lambda t=text: press(t)).grid(row=row, column=col)
 
-# Ejecutar el bucle de la aplicación
 root.mainloop()
+
+
+
+
